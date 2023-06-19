@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Lista de Livros</title>
+
+<style>
+body {
+	font-family: Arial, sans-serif;
+	background-color: #f2f2f2;
+	padding: 20px;
+}
+
+.container {
+	max-width: 800px;
+	margin: 0 auto;
+	background-color: #fff;
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+	color: #333;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 20px;
+}
+
+th, td {
+	padding: 10px;
+	text-align: left;
+	border-bottom: 1px solid #ccc;
+}
+
+th {
+	background-color: #f9f9f9;
+	font-weight: bold;
+}
+
+tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+tr:hover {
+	background-color: #ddd;
+}
+
+.button-new {
+	display: inline-block;
+	background-color: #428bca;
+	color: #fff;
+	border: none;
+	padding: 10px 20px;
+	font-size: 16px;
+	text-decoration: none;
+	border-radius: 4px;
+	transition: background-color 0.3s ease;
+	margin-bottom: 10px; /* Adicionado espaço abaixo do botão */
+}
+
+.button-new:hover {
+	background-color: #3071a9;
+}
+</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Lista de Livros</h1>
+
+		<table>
+			<!-- Cabeçalho da tabela -->
+			<tr>
+				<th>Título</th>
+				<th>Autor</th>
+				<th>Editora</th>
+				<th>Ano de Publicação</th>
+				<th>ISBN</th>
+			</tr>
+			<!-- Itens da tabela -->
+			<tr th:each="livro : ${livros}">
+				<td th:text="${livro.titulo}"></td>
+				<td th:text="${livro.autor}"></td>
+				<td th:text="${livro.editora}"></td>
+				<td th:text="${livro.anoPublicacao}"></td>
+				<td th:text="${livro.isbn}"></td>
+			</tr>
+		</table>
+
+		<div style="text-align: center;">
+			<a href="/livros/novo" class="button-new">Novo</a>
+		</div>
+	</div>
+</body>
+</html>
